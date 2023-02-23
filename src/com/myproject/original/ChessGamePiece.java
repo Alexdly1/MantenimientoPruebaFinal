@@ -16,9 +16,9 @@ import javax.swing.ImageIcon;
  * @version 2010.11.17
  */
 public abstract class ChessGamePiece{
-    private boolean             skipMoveGeneration;
-    private int                 pieceColor;
-    private ImageIcon           pieceImage;
+    protected boolean             skipMoveGeneration;
+    protected int                 pieceColor;
+    protected ImageIcon           pieceImage;
     /**
      * The list of possible moves for this piece. Updated when actions involving
      * this piece occur. (created, moved, selected, etc)
