@@ -1,6 +1,5 @@
 package com.myproject.controller;
 
-import com.myproject.controller.ChessPanel;
 import java.awt.Component;
 import java.awt.event.*;
 import javax.swing.*;
@@ -12,6 +11,13 @@ import javax.swing.*;
  * @author Myles David II (davidmm2)
  * @author Danielle Bushrow (dbushrow)
  * @version 2010.11.17
+ * Este código utiliza el patrón de programación de "Listener". En particular, 
+ * utiliza el patrón de diseño "Observer" o "Listener" para manejar los eventos 
+ * generados por los elementos de la GUI.
+ * 
+ * Ademas este código sigue el patrón de diseño de "Factory Method" para crear menús 
+ * y elementos de menú en bucles for, lo que permite una creación de menús y 
+ * elementos de menú más eficiente y escalable.
  */
 public class ChessMenuBar
     extends JMenuBar{
@@ -54,6 +60,7 @@ public class ChessMenuBar
          */
         @Override
         public void actionPerformed( ActionEvent event ){
+            
             String buttonName = ( (JMenuItem)event.getSource() ).getText();
             if ( buttonName.equals( "About" ) ){
                 aboutHandler();
@@ -72,54 +79,41 @@ public class ChessMenuBar
                 toggleGraveyardHandler();
             }
         }
-    }
-    // ----------------------------------------------------------
-    /**
-     * Takes an appropriate action if the about button is clicked.
-     */
-    private void aboutHandler(){
+        private void aboutHandler(){
         JOptionPane.showMessageDialog(
-            this.getParent(),
+            getParent(),
             "YetAnotherChessGame v1.0 by:\nBen Katz\nMyles David\n"
-                + "Danielle Bushrow\n\nFinal Project for CS2114 @ VT" );
-    }
-    /**
-     * Takes an appropriate action if the restart button is clicked.
-     */
-    private void restartHandler(){
-        ( (ChessPanel)this.getParent() ).getGameEngine().reset();
-    }
-    /**
-     * Takes an appropriate action if the exit button is clicked.
-     * Uses Tony Allevato's code for exiting a GUI app without System.exit()
-     * calls.
-     */
-    private void exitHandler(){
-        JOptionPane.showMessageDialog( this.getParent(), "Thanks for leaving"
-            + ", quitter! >:(" );
-        Component possibleFrame = this;
-        while ( possibleFrame != null && !( possibleFrame instanceof JFrame ) ){
-            possibleFrame = possibleFrame.getParent();
+                + "Danielle Bushrow\n\nFinal Project for CS2114 @ VT" 
+            );
         }
-        JFrame frame = (JFrame)possibleFrame;
-        frame.setVisible( false );
-        frame.dispose();
-    }
-    /**
-     * Takes an appropriate action if the toggle graveyard button is clicked.
-     */
-    private void toggleGraveyardHandler(){
-        ( (ChessPanel)this.getParent() ).getGraveyard( 1 ).setVisible(
-            !( (ChessPanel)this.getParent() ).getGraveyard( 1 ).isVisible() );
-        ( (ChessPanel)this.getParent() ).getGraveyard( 2 ).setVisible(
-            !( (ChessPanel)this.getParent() ).getGraveyard( 2 ).isVisible() );
-    }
-    /**
-     * Takes an appropriate action if the toggle game log button is clicked.
-     */
-    private void toggleGameLogHandler(){
-        ( (ChessPanel)this.getParent() ).getGameLog().setVisible(
-            !( (ChessPanel)this.getParent() ).getGameLog().isVisible() );
-        ( (ChessPanel)this.getParent() ).revalidate();
+        
+        private void restartHandler(){
+            ( (ChessPanel)getParent() ).getGameEngine().reset();
+        }
+    
+        private void toggleGraveyardHandler(){
+            ( (ChessPanel)getParent() ).getGraveyard( 1 ).setVisible(
+                !( (ChessPanel)getParent() ).getGraveyard( 1 ).isVisible() );
+            ( (ChessPanel)getParent() ).getGraveyard( 2 ).setVisible(
+                !( (ChessPanel)getParent() ).getGraveyard( 2 ).isVisible() );
+        }
+        
+        private void toggleGameLogHandler(){
+            ( (ChessPanel)getParent() ).getGameLog().setVisible(
+                !( (ChessPanel)getParent() ).getGameLog().isVisible() );
+            ( (ChessPanel)getParent() ).revalidate();
+        }
+        
+        private void exitHandler(){
+            JOptionPane.showMessageDialog(getParent(), "Thanks for leaving"
+                + ", quitter! >:(" );
+            Component possibleFrame = getParent();
+            while ( possibleFrame != null && !( possibleFrame instanceof JFrame ) ){
+                possibleFrame = possibleFrame.getParent();
+            }
+            JFrame frame = (JFrame)possibleFrame;
+            frame.setVisible( false );
+            frame.dispose();
+        }
     }
 }

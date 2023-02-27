@@ -1,6 +1,5 @@
 package com.myproject.controller;
 
-import com.myproject.controller.ChessGameLog;
 import com.myproject.model.ChessGameBoard;
 import com.myproject.model.ChessGameEngine;
 import java.awt.*;
@@ -21,7 +20,7 @@ public class ChessPanel
     private ChessGameLog    gameLog;
     private ChessGraveyard  playerOneGraveyard;
     private ChessGraveyard  playerTwoGraveyard;
-    private ChessGameEngine gameEngine;
+    private transient ChessGameEngine gameEngine;
     // ----------------------------------------------------------
     /**
      * Create a new ChessPanel object.
