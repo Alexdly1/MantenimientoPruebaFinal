@@ -72,7 +72,7 @@ public class Pawn
      */
     @Override
     protected ArrayList<String> calculatePossibleMoves(ChessGameBoard board) {
-        ArrayList<String> moves = new ArrayList<String>();
+        ArrayList<String> moves = new ArrayList<>();
         if (!isPieceOnScreen()) {
             return moves;
         }
@@ -104,12 +104,14 @@ public class Pawn
     private boolean isValidMove(ChessGameBoard board, int row, int col) {
         return isOnScreen(row, col) && board.getCell(row, col).getPieceOnSquare() == null;
     }
-
+    
+    @Override
     public boolean isEnemy(ChessGameBoard board, int row, int col) {
         return isOnScreen(row, col) && board.getCell(row, col).getPieceOnSquare() != null
                 && board.getCell(row, col).getPieceOnSquare().getColorOfPiece() != getColorOfPiece();
     }
-
+    
+    @Override
     public boolean isOnScreen(int row, int col) {
         return row >= 0 && row <= 7 && col >= 0 && col <= 7;
     }
