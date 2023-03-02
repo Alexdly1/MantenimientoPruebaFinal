@@ -132,14 +132,15 @@ public class ChessMenuBar
         JMenu fileMenu = menuBar.getMenu(0);
         JMenu optionsMenu = menuBar.getMenu(1);
         JMenu helpMenu = menuBar.getMenu(2);
-        // Se comprueba que los menús no sean nulos y que tengan el texto esperado.
+        // Se comprueba que los menús no sean nulos y que tengan el texto esperado.}
+        // Si se cumple todo lo anterior, la prueba pasa satisfactoriamente.
         assertNotNull(fileMenu);
         assertNotNull(optionsMenu);
         assertNotNull(helpMenu);
         assertEquals("File", fileMenu.getText());
         assertEquals("Options", optionsMenu.getText());
         assertEquals("Help", helpMenu.getText());
-        // Si se cumple todo lo anterior, la prueba pasa satisfactoriamente.
+        
     }
 
     @Test
