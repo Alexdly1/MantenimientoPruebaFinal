@@ -119,8 +119,10 @@ public class ChessMenuBar
                 possibleFrame = possibleFrame.getParent();
             }
             JFrame frame = (JFrame)possibleFrame;
-            frame.setVisible( false );
-            frame.dispose();
+            if (frame != null) {
+                frame.setVisible(false);
+                frame.dispose();
+            }
         }
     }
     // Este método de prueba unitaria prueba la creación de los menús de la aplicación.
