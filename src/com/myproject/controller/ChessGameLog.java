@@ -3,7 +3,6 @@ package com.myproject.controller;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import java.util.Date;
-import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 // -------------------------------------------------------------------------
 /**
